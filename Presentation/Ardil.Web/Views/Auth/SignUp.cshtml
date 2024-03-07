@@ -1,0 +1,40 @@
+﻿@model Ardil.Application.Models.IdentityModels.SignUp.SignUpRequestModel
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="signup" enctype="multipart/form-data" aspt-controller="auth" method="post">
+    @Html.ValidationSummary()
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="Name">İsim</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="Surname">Soyisim</label>
+        <span asp-validation-for="Surname" class="text-danger"></span>
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="UserName">Kullanıcı Adı</label>
+        <span asp-validation-for="UserName" class="text-danger"></span>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="Email">Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input type="email" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="Password">Şifre</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="RepeatPassword">Şifre Tekrar</label>
+        <span asp-validation-for="RepeatPassword" class="text-danger"></span>
+        <input type="password" asp-for="RepeatPassword" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-3">Kayıt Ol</button>
+</form>

@@ -1,0 +1,36 @@
+﻿@model Ardil.Application.Models.IdentityModels.SignIn.SignInRequestModel
+
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="signin" enctype="multipart/form-data" aspt-controller="auth" method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("UserNotFoundError")
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="UserNameOrEmail" >Email veya Kullanıcı Adı</label>
+        <input type="text" asp-for="UserNameOrEmail" asp-name="UserNameOrEmail"  name="UserNameOrEmail" class=" form-control" />
+        <span asp-validation-for="UserNameOrEmail" class="text-danger"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" asp-for="Password">Şifre</label>
+        <input type="password" asp-for="Password" asp-name="Password" name="Password"  class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <!--<div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                <label class="form-check-label" for="form2Example31"> Beni Hatırla </label>
+            </div>
+        </div>
+        <div class="col">
+            <a href="/forgotpassword">Şifreni mi unuttun?</a>
+        </div>
+    </div>-->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
+    <div class="text-center">
+        <p>Henüz Üye Değil misin? <a href="/auth/signup">Kayıt Ol</a></p>
+    </div>
+</form>

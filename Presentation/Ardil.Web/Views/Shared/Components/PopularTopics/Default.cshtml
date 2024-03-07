@@ -1,0 +1,23 @@
+﻿@model List<Ardil.Application.Models.EntryModels.TopicalEntriesResponseModel>
+
+@foreach (var _model in Model)
+{
+    <div style="padding: 2rem 0 2rem 0;">
+        <h4 style="margin: 15px 0;font-size: 22px;color: #333333;"> <a href="/?topicId=@_model.Topic.Id"><b>@_model.Topic.Subject</b></a>  </h4>
+        <p>@_model.Entry.Content</p>
+        <div>
+            <i class="fa-solid fa-circle-arrow-up"></i>
+            <i class="fa-solid fa-circle-arrow-down" style="padding: 0 0 0 15px;"></i>
+            <i class="fa-solid fa-ellipsis" style="float: right;padding: 0 10px 0 15px;"></i>
+            <i class="fa-solid fa-arrow-up-from-bracket" style="float: right; "></i>
+        </div>
+        <div style=" display:flex ; float: right; font-size: 14px;" class="p-2">
+            <div class="me-2 ">
+                <a style="display: block; text-align: right; text-decoration: none; color: #81C14B;" href="">@*_model.Entry.User.UserName*@</a>
+                <a style="display: block;text-decoration: none; color: #888888;" href="">@_model.Entry.CreatedDate</a>
+            </div>
+            <img src="img/user.svg" alt="">
+        </div>
+    </div>
+}
+

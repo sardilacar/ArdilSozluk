@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+    # Database service
+    db:
+        image: postgres:latest
+        environment:
+            POSTGRES_DB: ArdilDb
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: Ardil1234
+        ports:
+            - "5432:5432"
+        expose:
+            - '80'
+        volumes:
+            - db_data:/var/lib/postgresql/data
+
+    # Application service
+    ardilweb:
+        container_name: ardilweb
+        image: ${DOCKER_REGISTRY-}ardilweb
+        build:
+            context: .
+            dockerfile: Presentation/Ardil.Web/Dockerfile
+        ports:
+            - "8000:80"
+        depends_on:
+            - db
+        environment:
+            DATABASE_URL: postgres://postgres:Ardil1234@db:5432/ArdilDb  # Use the database service name as the hostname
+
+volumes:
+  db_data:  # Create a named volume for PostgreSQL data storage
